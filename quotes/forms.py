@@ -1,18 +1,7 @@
-from django.forms import ModelForm, CharField, TextInput, DateField, DateInput, ModelChoiceField
+from django.forms import ModelForm, CharField, TextInput, DateField, DateInput, ModelChoiceField, Select
+from django.db import models
 
 from .models import Quote, Tag, Author
-
-
-class AddQuoteForm(ModelForm):
-    quote = CharField(max_length=200, required=True, widget=TextInput(attrs={"class": "form-control"}))
-    author = ModelChoiceField(queryset=Author.objects.all(),
-                              empty_label="Select an author",
-                              blank=True, required=False)
-
-    class Meta:
-        model = Quote
-        fields = ["quote", "author"]
-        exclude = ["tags"]
 
 
 class AddAuthorForm(ModelForm):
@@ -32,10 +21,23 @@ class AddAuthorForm(ModelForm):
         fields = ["full_name", "birth_date", "birth_place", "biography"]
 
 
-class TagForm(ModelForm):
-    name = CharField(min_length=3, max_length=60, required=True,
-                     widget=TextInput(attrs={"class": "form-control"}))
+class AddQuoteForm1(ModelForm):
+    new_quote = CharField(max_length=200, required=True, widget=TextInput(attrs={"class": "form-control"}))
+    author_choose = ModelChoiceField(queryset=Author.objects.values_list("full_name", flat=True), empty_label="author",
+                                     required=True, widget=Select({"class": "form-control"}))
+
+    class Meta:
+        model = Quote
+        fields = ["new_quote", "author_choose"]
+
+
+class AddTagForm1(ModelForm):
+    new_tag = CharField(min_length=3, max_length=60, required=False,
+                        widget=TextInput(attrs={"class": "form-control"}))
+    tag_choose = ModelChoiceField(queryset=Tag.objects.values_list("name", flat=True),
+                                  empty_label="tag", required=False,
+                                  widget=Select({"class": "form-control"}),)
 
     class Meta:
         model = Tag
-        fields = ["name"]
+        fields = ["new_tag", "tag_choose"]

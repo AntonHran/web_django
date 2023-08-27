@@ -22,10 +22,10 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="btn btn-primary" href="{% url 'quotes:add_quote' %}">Add quote</a>
+                        <a class="btn btn-primary" href="{% url 'quotes:add_author' %}">Add AUTHOR</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary" href="{% url 'quotes:add_author' %}">Add author</a>
+                        <a class="btn btn-primary" href="{% url 'quotes:add_quote1' %}">Add QUOTE</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-danger" href="{% url 'users:logout' %}">Logout</a>

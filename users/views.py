@@ -23,5 +23,5 @@ class RegisterView(View):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect(to="quotes:root_paginate")
+            return redirect(to="")
         return super(RegisterView, self).dispatch(request, *args, **kwargs)

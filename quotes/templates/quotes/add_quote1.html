@@ -15,29 +15,30 @@
 {% endif%}
 
 {% block content %}
-<h1>Add author</h1>
-<form action="{% url 'quotes:add_author' %}" method="post" enctype="multipart/form-data">
+<h1>Add new quote</h1>
+<form action="{% url 'quotes:add_quote1' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mb-3">
-        <label class="form-label">Full name</label>
-        {{form.full_name}}
-        <span>{{form.errors.full_name}}</span>
+        <label class="form-label">New Quote:</label>
+        {{form_quote.new_quote}}
     </div>
+    <span>{{form_quote.errors.new_quote}}</span>
     <div class="mb-3">
-        <label class="form-label">Birth date</label>
-        {{form.birth_date}}
-        <span>{{form.errors.birth_date}}</span>
+        <label class="form-label">Choose an Author</label>
+        {{form_quote.author_choose}}
     </div>
+
     <div class="mb-3">
-        <label class="form-label">Birth place</label>
-        {{form.birth_place}}
-        <span>{{form.errors.birth_place}}</span>
+        <label class="form-label">Choose a Tag</label>
+        {{form_tag.tag_choose}}
     </div>
+    <p>Or</p>
     <div class="mb-3">
-        <label class="form-label">Biography</label>
-        {{form.biography}}
-        <span>{{form.errors.biography}}</span>
+        <label class="form-label">Enter a new Tag</label>
+        {{form_tag.new_tag}}
     </div>
+    <span>{{form_tag.errors.new_tag}}</span>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
 {% endblock %}
