@@ -1,5 +1,4 @@
 from django.forms import ModelForm, CharField, TextInput, DateField, DateInput, ModelChoiceField, Select
-from django.db import models
 
 from .models import Quote, Tag, Author
 
