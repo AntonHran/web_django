@@ -37,7 +37,7 @@
         </li>
 
         <li class="next">
-            <a href="{% if quotes.has_next %} {% url 'quotes:root_paginate' quotes.next_page_number %} {% else %} # {% endif %}">
+            <a href="{% if quotes.has_next %} {% url 'quotes:index' quotes.next_page_number %} {% else %} # {% endif %}">
                 Next <span aria-hidden="true">→</span></a>
         </li>
     </ul>
